@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "image_subscriber = image_handling.image_subsciber:main"
         ],
     },
 )
