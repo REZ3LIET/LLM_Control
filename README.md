@@ -1,7 +1,7 @@
 # LLM_Control
 Controlling Arm using LLMs decision making capabilities (Conceptual)
 
-This project is based on [KUKA-ROS2](https://github.com/REZ3LIET/KUKA-ROS2)
+This project is based on [KUKA-ROS2 llm_dev branch](https://github.com/REZ3LIET/KUKA-ROS2/tree/llm_dev)
 
 ## Requirements
 This project uses Ollama's following models from [Ollama Model Library](https://ollama.com/search)
