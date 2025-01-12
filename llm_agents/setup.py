@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            "kuka_agent = llm_agents.kuka_agent.agent.kuka_agent:main"
         ],
     },
 )

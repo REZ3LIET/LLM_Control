@@ -3,12 +3,14 @@ from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 
+
 @tool
 def heelo_world():
     """Prompts user to add new tools and returns True"""
     greeting = "Heelo, to give me more capabilities introduce me to new tools!"
     print(greeting)
     return True
+
 
 class BaseRobotAgent:
     def __init__(self, ollama_model="qwen2.5-coder:3b", tools=[heelo_world]):
@@ -35,13 +37,14 @@ class BaseRobotAgent:
         )
         return system_prompt
 
-    def send_command(self, usr_cmd):
+    def prompt_llm(self, prompt):
         response = self.robot_agent.invoke(
             {
-                "input": usr_cmd
+                "input": prompt
             }
         )
         return response
+
 
 def main():
     robot_agent = BaseRobotAgent()
@@ -52,6 +55,7 @@ def main():
             break
         response = robot_agent.send_command(prompt)
         print(f"Agent: {response}")
+
 
 if __name__ == "__main__":
     main()
