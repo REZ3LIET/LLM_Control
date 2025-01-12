@@ -4,7 +4,7 @@ from llm_agents.kuka_agent.actions.action_helper import KukaActionHelper
 
 
 @tool
-def move_to_pose(position_values: List[float]) -> Tuple[bool, str]:
+def move_to_pose(position_values: List[float]) -> bool:
     """
     Control the Kuka Arm to reach the desired position values.
 
@@ -17,4 +17,4 @@ def move_to_pose(position_values: List[float]) -> Tuple[bool, str]:
 
     executer = KukaActionHelper()
     result = executer.move_xyzw(*position_values)
-    return result
+    return result[0]
