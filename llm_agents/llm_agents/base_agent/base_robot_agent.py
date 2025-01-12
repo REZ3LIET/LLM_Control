@@ -6,7 +6,7 @@ from langchain.agents import AgentExecutor, create_tool_calling_agent
 
 @tool
 def heelo_world():
-    """Prompts user to add new tools and returns True"""
+    """Prompts user to add new tools and returns True."""
     greeting = "Heelo, to give me more capabilities introduce me to new tools!"
     print(greeting)
     return True

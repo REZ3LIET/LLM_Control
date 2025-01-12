@@ -1,8 +1,3 @@
-import json
-from langchain_community.chat_message_histories import ChatMessageHistory
-from langchain_core.chat_history import BaseChatMessageHistory
-from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 
@@ -11,6 +6,7 @@ from io import BytesIO
 # from IPython.display import HTML, display
 from PIL import Image
 
+
 class QA_Agent:
     def __init__(self):
         self.llm = ChatOllama(model="llava")
@@ -18,7 +14,7 @@ class QA_Agent:
 
     def convert_to_base64(self, file_path):
         """
-        Convert PIL images to Base64 encoded strings
+        Convert PIL images to Base64 encoded strings.
 
         :param pil_image: PIL image
         :return: Re-sized Base64 string
@@ -40,7 +36,7 @@ class QA_Agent:
             User: Move left 3
             Steps:
                 1. Move(0, -3, 0)
-            
+
             User: Turn left then go 7 units down
             Steps:
                 1. rotate(-1.5707)
@@ -48,10 +44,13 @@ class QA_Agent:
             """
         )
         return system_prompt
-    
+
     def agent_chat(self, usr_prompt, img_path=None):
         image = self.convert_to_base64(img_path)
-        input = [{"type": "image_url", "image_url": f"data:image/png;base64,{image}"}, {"type": "text", "text": usr_prompt}]
+        input = [
+            {"type": "image_url", "image_url": f"data:image/png;base64,{image}"},
+            {"type": "text", "text": usr_prompt}
+        ]
         prompt = [
             SystemMessage(self.get_system_prompt()),
             HumanMessage(input)
@@ -59,9 +58,11 @@ class QA_Agent:
         response = self.llm.invoke(prompt)
         return response.content
 
+
 def main():
     chat_agent = QA_Agent()
-    img = "/workspaces/PnP_Pl/colcon_ws/src/LLM_Control/llm_image_analyser/llm_image_analyser/kuka_img.png"
+    img = "/workspaces/PnP_Pl/colcon_ws/src/LLM_Control/llm_image_analyser \
+        /llm_image_analyser/kuka_img.png"
     response = chat_agent.agent_chat("Turn 180 degrees and rise 2 units", img)
     print(f"Assistant: {response}")
     # while True:
@@ -73,6 +74,7 @@ def main():
     #     print(f"Assistant: {response}")
     #     print("-"*30)
     # chat_agent.save_history()
+
 
 if __name__ == "__main__":
     main()
