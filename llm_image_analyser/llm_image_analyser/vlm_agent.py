@@ -71,8 +71,9 @@ class QA_Agent:
 def main():
     chat_agent = QA_Agent()
     img = "/workspaces/PnP_Pl/colcon_ws/src/LLM_Control/llm_image_analyser" + \
-        "/llm_image_analyser/kuka_img.png"
-    response = chat_agent.agent_chat("Turn 180 degrees and rise 2 units", img)
+        "/llm_image_analyser/kuka_obj.png"
+    response = chat_agent.agent_chat("Pick the blue object", img)
+    # response = chat_agent.agent_chat("Turn 180 degrees and rise 2 units", img)
     print(f"Assistant: {response}")
     # while True:
     #     prompt = input("Enter you query|('/exit' to quit session): ")

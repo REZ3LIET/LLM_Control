@@ -9,7 +9,7 @@ from ament_index_python.packages import get_package_share_directory
 
 def generate_launch_description():
     # Loading Gazebo
-    world = os.path.join(get_package_share_directory("llm_arm_control"), "world/empty_world.sdf")
+    world = os.path.join(get_package_share_directory("llm_arm_control"), "world/objects_world.sdf")
     ign_gazebo_node = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             [
