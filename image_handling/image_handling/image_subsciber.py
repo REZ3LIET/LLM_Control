@@ -37,6 +37,9 @@ class ImageSubscriber(Node):
         # Convert ROS Image message to OpenCV image
         try:
             current_frame = self.br.imgmsg_to_cv2(data, desired_encoding="bgr8")
+            cv2.imwrite(
+                "/workspaces/PnP_Pl/colcon_ws/src/LLM_Control/llm_image_analyser/llm_image_analyser/kuka_feed_01.png",
+                current_frame)
         except CvBridgeError as e:
             print(e)
 

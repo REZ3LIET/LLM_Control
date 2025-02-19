@@ -27,23 +27,34 @@ class QA_Agent:
 
     def get_system_prompt(self):
         system_prompt = (
-            "Act like a KUKA robot capable of perceiving and interacting with your environment. "
-            "You have sensors that allow you to see and understand the objects and obstacles around you. "
-            "You are currently viewing a live image stream that shows your surroundings, including objects, "
-            "obstacles, and your own position. Based on this image, you need to make decisions about what actions "
-            "to take in order to complete the user's task. You can plan and update your actions continuously as you "
-            "process new frames of your environment."
+            # "You are Marx, an exceptional image analyst capable of locating coordinates "
+            # "of objects in a image, recognise objects, classify objects, etc. "
+            # "You have skillsets for advanced image processing making you the expert in "
+            # "this field. "
+            # "User will give you an image from a live camera feed of a Kuka ARM, the user "
+            # "wants to interact with the objects if present in the Kuka Arm's surroundings. "
+            # "Your task is to analyse the image from the camera and if the user specified object "
+            # "exists then, find the coordinates (x, y, z) in meters of the object with respect to the "
+            # "base of the robot. For z the coordinate should be with respect to the gripper "
+            # "of the Kuka Arm."
+            # "Act like a KUKA robot capable of perceiving and interacting with your environment. "
+            # "You have sensors that allow you to see and understand the objects and obstacles around you. "
+            # "You are currently viewing a live image stream that shows your surroundings, including objects, "
+            # "obstacles, and your own position. Based on this image, you need to make decisions about what actions "
+            # "to take in order to complete the user's task. You can plan and update your actions continuously as you "
+            # "process new frames of your environment."
+            # ""
+            # "Your task is to interact with the environment and execute user commands based on what you see in the image. "
+            # "This could involve moving toward objects, avoiding obstacles, picking up or manipulating objects, or navigating to specific locations. "
+            # "You must continuously monitor the camera feed and update your actions as necessary to achieve the task."
+            # ""
+            # "To perform the commands, you have access to the following functions:"
+            # "move_lin: This function displaces your end effector in the x, y, or z direction. You specify the amount to move instead of a goal position."
+            # "move_rot: This function rotates the end effector about the roll, pitch, or yaw axis, using degrees."
+            # "toggle_gripper: This command toggles the gripper, with 0 being fully open and 99 being fully closed."
+            # ""
+            # "Move the robot with respect to the updated stream you are getting."
             ""
-            "Your task is to interact with the environment and execute user commands based on what you see in the image. "
-            "This could involve moving toward objects, avoiding obstacles, picking up or manipulating objects, or navigating to specific locations. "
-            "You must continuously monitor the camera feed and update your actions as necessary to achieve the task."
-            ""
-            "To perform the commands, you have access to the following functions:"
-            "move_lin: This function displaces your end effector in the x, y, or z direction. You specify the amount to move instead of a goal position."
-            "move_rot: This function rotates the end effector about the roll, pitch, or yaw axis, using degrees."
-            "toggle_gripper: This command toggles the gripper, with 0 being fully open and 99 being fully closed."
-            ""
-            "Move the robot with respect to the updated stream you are getting."
         )
         return system_prompt
 
@@ -65,7 +76,7 @@ def main():
     chat_agent = QA_Agent()
     img = "/workspaces/PnP_Pl/colcon_ws/src/LLM_Control/llm_image_analyser" + \
         "/llm_image_analyser/kuka_obj.png"
-    response = chat_agent.agent_chat("Pick the blue object", img)
+    response = chat_agent.agent_chat("What is the dimensions of the image", img)
     # response = chat_agent.agent_chat("Turn 180 degrees and rise 2 units", img)
     print(f"Assistant: {response}")
     # while True:

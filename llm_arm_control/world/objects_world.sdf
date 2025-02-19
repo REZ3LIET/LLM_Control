@@ -156,7 +156,7 @@
     <include>
       <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Small Blue Box</uri>
       <name>breif_case</name>
-      <pose>1.4 0.4 0.01 0 -0 0</pose>
+      <pose>1.4 0.4 0.01 0 0 0</pose>
     </include>
 
     <light name='sun' type='directional'>

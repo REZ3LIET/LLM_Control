@@ -135,4 +135,5 @@ loop Until arm has picked up object
     VLM_A -> LLM_B : Confirm gripper hold
     LLM_B -> Move_Tool : Perform small adjustments if needed
     Move_Tool -> Move_Tool : Lift obj
+@enduml
 ```
